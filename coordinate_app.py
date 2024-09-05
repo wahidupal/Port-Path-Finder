@@ -3,7 +3,6 @@ import pandas as pd
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut, GeocoderServiceError
 import time
-from tqdm import tqdm
 import io
 import base64
 
@@ -52,8 +51,7 @@ def main():
         2. The app will geocode each port name to find its latitude and longitude.
         3. You can download the file with the coordinates once the process is complete.
         4. This app was initially created to find the coordinates of ports but it's not just limited to that. As long as the name of the column containing the locations is "Port Name", it will be able to find out the coordinates of those places.
-        5. Additinally I added a dealy of 1 second between each request to minimize getting errors
-
+        5. Additionally, I added a delay of 1 second between each request to minimize getting errors.
         """
     )
     
@@ -85,12 +83,13 @@ def main():
             total_ports = len(port_df)
             progress_bar = st.progress(0)
             
-            for index, row in tqdm(port_df.iterrows(), total=total_ports, desc="Geocoding Ports", unit="port"):
+            for index, row in port_df.iterrows():
                 port_name = row['Port Name']
                 lat, lon = get_coordinates(port_name)
                 port_df.at[index, 'Latitude'] = lat
                 port_df.at[index, 'Longitude'] = lon
                 
+                # Update progress bar
                 progress_bar.progress((index + 1) / total_ports)
                 
                 time.sleep(1)
