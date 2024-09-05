@@ -1,5 +1,3 @@
----
-
 # Port Path Finder
 
 **Port Path Finder** is a simple and efficient tool designed to help users find the geographical coordinates (latitude and longitude) of ports or locations from a list of names provided in CSV or Excel files. It uses geocoding to map location names to coordinates, making it useful for anyone working with port data or any place-based datasets.
@@ -23,5 +21,3 @@
 ## How It Works
 
 The app uses the **geopy** library to geocode port names by interacting with the OpenStreetMap Nominatim service. For each location, it retrieves the geographical coordinates and appends them to the original dataset, which you can download after processing.
-
----
