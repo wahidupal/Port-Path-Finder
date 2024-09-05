@@ -1,8 +1,7 @@
 streamlit
-yfinance
-plotly
 pandas
-streamlit_option_menu
-prophet
-numpy
-scikit-learn
+geopy
+time
+tqdm
+io
+base64
